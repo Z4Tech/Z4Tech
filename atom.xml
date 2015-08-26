@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[Z4Tech Interface]]></title>
+  <subtitle><![CDATA[Tracking...]]></subtitle>
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://z4tech.github.io/"/>
+  <updated>2015-08-26T03:28:08.000Z</updated>
+  <id>http://z4tech.github.io/</id>
+  
+  <author>
+    <name><![CDATA[Z4Tech]]></name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Hello, World!]]></title>
+    <link href="http://z4tech.github.io/2015/08/26/hello/"/>
+    <id>http://z4tech.github.io/2015/08/26/hello/</id>
+    <published>2015-08-26T02:48:28.000Z</published>
+    <updated>2015-08-26T03:28:08.000Z</updated>
+    <content type="html"><![CDATA[<p>This is my technical blog which I save my work and progress. Hope it will be helpful for someone, especially you.  </p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>This is my technical blog which I save my work and progress. Hope it will be helpful for someone, especially you.  </p>
+]]>
+    </summary>
+    
+  </entry>
+  
+</feed>
