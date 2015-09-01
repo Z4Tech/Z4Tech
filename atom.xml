@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Tracking...]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://z4tech.github.io/"/>
-  <updated>2015-09-01T12:52:03.000Z</updated>
+  <updated>2015-09-01T12:54:57.000Z</updated>
   <id>http://z4tech.github.io/</id>
   
   <author>
@@ -15,11 +15,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[Anki2Gitbook]]></title>
+    <title><![CDATA[Convert Anki Flashcards into Gitbook]]></title>
     <link href="http://z4tech.github.io/2015-09-01/Anki2Gitbook/"/>
     <id>http://z4tech.github.io/2015-09-01/Anki2Gitbook/</id>
     <published>2015-09-01T08:42:41.000Z</published>
-    <updated>2015-09-01T12:52:03.000Z</updated>
+    <updated>2015-09-01T12:54:57.000Z</updated>
     <content type="html"><![CDATA[<p>Anki is a great flashcard tool for memorizing new words, and here how to convert the flashcard desk in anki to wordlists in pdf, epub and html.  This procedure is done on Mac OSX 10.10, and probably work similarly on other Unix system.</p>
 <p>Recently I’ve been working on GRE vocabulary, and Anki is a well-known multi-platform app for this. There are many great sets of cards and sometimes you just want to use them else where such as creating some wordlist.  </p>
 <p>The vocabulary desks <code>.apkg</code> files are just <code>.zip</code> packages, you can just unzip it with command line:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip the_desk_name.apkg</span><br></pre></td></tr></table></figure><br>There are several files there, what we need is the <code>.anki2</code> file which is basically a sqlite database. Change the extension to sqlite and you can do anything with it! I just open it up with the Firefox extension - SQLite Manager.  </p>
