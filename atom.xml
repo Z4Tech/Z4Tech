@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Tracking...]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://z4tech.github.io/"/>
-  <updated>2015-09-26T15:53:53.000Z</updated>
+  <updated>2015-09-27T04:53:41.000Z</updated>
   <id>http://z4tech.github.io/</id>
   
   <author>
@@ -13,6 +13,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[sudo brew - Do not Try and How to Recover]]></title>
+    <link href="http://z4tech.github.io/2015-09-27/Never-Try-sudo-brew/"/>
+    <id>http://z4tech.github.io/2015-09-27/Never-Try-sudo-brew/</id>
+    <published>2015-09-27T04:41:07.000Z</published>
+    <updated>2015-09-27T04:53:41.000Z</updated>
+    <content type="html"><![CDATA[<p>If someone tries to use <code>brew</code> with <code>sudo</code>, a warning will show up:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error: Cowardly refusing to `sudo brew [option]`&#10;You can use brew with sudo, but only if the brew executable is owned by root.&#10;However, this is both not recommended and completely unsupported so do so at&#10;your own risk.</span><br></pre></td></tr></table></figure><br>Well, you may continue to run it after use <code>sudo -i</code>, but you will laterly have many problems. While <code>brew</code> is running under <code>root</code>, it will change the ownership of folders like <code>/usr/local/include</code> to <code>root</code>. And later if you want to run commands like <code>brew link</code>, you will fail:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error: Could not symlink include/gdbm.h&#10;/usr/local/include is not writable.</span><br></pre></td></tr></table></figure><br>To recover this, you must change the ownership back:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R $(whoami) /usr/local/include&#10;sudo chown -R $(whoami) /usr/local/lib</span><br></pre></td></tr></table></figure><br>And remember: Do not try <code>sudo brew</code> the next time.</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>If someone tries to use <code>brew</code> with <code>sudo</code>, a warning will show up:<br><figure class="highlight"><table><tr><td cla]]>
+    </summary>
+    
+      <category term="brew" scheme="http://z4tech.github.io/tags/brew/"/>
+    
+      <category term="sudo" scheme="http://z4tech.github.io/tags/sudo/"/>
+    
+      <category term="Misc" scheme="http://z4tech.github.io/categories/Misc/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Static Server in Node.js]]></title>
