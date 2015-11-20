@@ -3,17 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: sudo | Z4Tech Interface</title>
+  <title>Simple Proxy by SSH Tunneling | Z4Tech Interface</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Z4Tech Interface">
-<meta property="og:url" content="http://z4tech.github.io/tags/sudo/index.html">
+  <meta name="description" content="It is unbelievable that some friends with their own VPS don’t know about SSH tunneling. This is a far more easy way to set up proxy.  
+1ssh -D port username@server
+This command will open up a ssh tunn">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Simple Proxy by SSH Tunneling">
+<meta property="og:url" content="http://z4tech.github.io/2015-11-21/ssh-proxy/index.html">
 <meta property="og:site_name" content="Z4Tech Interface">
-<meta property="og:description">
+<meta property="og:description" content="It is unbelievable that some friends with their own VPS don’t know about SSH tunneling. This is a far more easy way to set up proxy.  
+1ssh -D port username@server
+This command will open up a ssh tunn">
+<meta property="og:updated_time" content="2015-11-20T19:14:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Z4Tech Interface">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Simple Proxy by SSH Tunneling">
+<meta name="twitter:description" content="It is unbelievable that some friends with their own VPS don’t know about SSH tunneling. This is a far more easy way to set up proxy.  
+1ssh -D port username@server
+This command will open up a ssh tunn">
   
     <link rel="alternative" href="/atom.xml" title="Z4Tech Interface" type="application/atom+xml">
   
@@ -62,39 +69,77 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015-09-27/Never-Try-sudo-brew/" class="archive-article-date">
-  <time datetime="2015-09-27T04:41:07.000Z" itemprop="datePublished">Sep 27</time>
+        <section id="main"><article id="post-ssh-proxy" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015-11-21/ssh-proxy/" class="article-date">
+  <time datetime="2015-11-20T19:02:24.000Z" itemprop="datePublished">2015-11-21</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/network/">network</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015-09-27/Never-Try-sudo-brew/">sudo brew - Do not Try and How to Recover</a>
+    <h1 class="article-title" itemprop="name">
+      Simple Proxy by SSH Tunneling
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>It is unbelievable that some friends with their own VPS don’t know about SSH tunneling. This is a far more easy way to set up proxy.  </p>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">ssh</span> -<span class="type">D</span> <span class="foreign"><span class="keyword">port</span> username@server</span></span><br></pre></td></tr></table></figure>
+<p>This command will open up a ssh tunneling service and listen to the local <code>port</code>. So you can just set proxy adress in your browser to <code>localhost:port</code> and everything is done!  </p>
+<p>Have fun!</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z4tech.github.io/2015-11-21/ssh-proxy/" data-id="cih81pp0f0000cn9ttz6u0px0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/">ssh</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015-09-27/Never-Try-sudo-brew/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">sudo brew - Do not Try and How to Recover</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
+
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'z4techinterface';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 </section>
         
           <aside id="sidebar">

@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Tracking...]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://z4tech.github.io/"/>
-  <updated>2015-09-27T04:53:41.000Z</updated>
+  <updated>2015-11-20T19:14:14.000Z</updated>
   <id>http://z4tech.github.io/</id>
   
   <author>
@@ -13,6 +13,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Simple Proxy by SSH Tunneling]]></title>
+    <link href="http://z4tech.github.io/2015-11-21/ssh-proxy/"/>
+    <id>http://z4tech.github.io/2015-11-21/ssh-proxy/</id>
+    <published>2015-11-20T19:02:24.000Z</published>
+    <updated>2015-11-20T19:14:14.000Z</updated>
+    <content type="html"><![CDATA[<p>It is unbelievable that some friends with their own VPS don’t know about SSH tunneling. This is a far more easy way to set up proxy.  </p>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">ssh</span> -<span class="type">D</span> <span class="foreign"><span class="keyword">port</span> username@server</span></span><br></pre></td></tr></table></figure>
+<p>This command will open up a ssh tunneling service and listen to the local <code>port</code>. So you can just set proxy adress in your browser to <code>localhost:port</code> and everything is done!  </p>
+<p>Have fun!</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>It is unbelievable that some friends with their own VPS don’t know about SSH tunneling. This is a far more easy way to set up proxy.  </p]]>
+    </summary>
+    
+      <category term="ssh" scheme="http://z4tech.github.io/tags/ssh/"/>
+    
+      <category term="network" scheme="http://z4tech.github.io/categories/network/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[sudo brew - Do not Try and How to Recover]]></title>
