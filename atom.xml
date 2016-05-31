@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Tracking...]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://z4tech.github.io/"/>
-  <updated>2015-11-20T19:17:00.000Z</updated>
+  <updated>2016-05-31T17:42:43.000Z</updated>
   <id>http://z4tech.github.io/</id>
   
   <author>
@@ -13,6 +13,23 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Update Node.js]]></title>
+    <link href="http://z4tech.github.io/2016-06-01/Update-Node-js/"/>
+    <id>http://z4tech.github.io/2016-06-01/Update-Node-js/</id>
+    <published>2016-05-31T17:40:15.000Z</published>
+    <updated>2016-05-31T17:42:43.000Z</updated>
+    <content type="html"><![CDATA[<p>The fastest way to update Node.js is to use moudule <code>n</code>:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g n&#10;sudo n stable</span><br></pre></td></tr></table></figure>
+<p>Updating never gets that easy!</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>The fastest way to update Node.js is to use moudule <code>n</code>:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><spa]]>
+    </summary>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Simple Proxy by SSH Tunneling]]></title>
