@@ -111,7 +111,7 @@
 <p>After that, find and click the Steam <code>.deb</code> package and install steam following the instructions. You should be able to login and launch Steam after this.</p>
 <h2 id="In-Home_Streaming">In-Home Streaming</h2><p><a href="https://brismuth.com/" target="_blank" rel="external">Brismuth</a> has a very good post on this topic. I just followed his steps. The ports used by Steam In-Home Streaming is by default blocked by ChromeOS. To unblock them, using the <code>iptables</code> command is the simplest way. First, install this command with <code>sudo apt-get install iptables</code> in the shell.</p>
 <p>And then create a new alias command to unblock all the ports needed:</p>
-<figure class="highlight dns"><figcaption><span>s</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">echo "alias steamStream='</span><br><span class="line">sudo iptables -<span class="keyword">A</span> INPUT -p udp --dport 27036 -j ACCEPT<span class="comment">; </span></span><br><span class="line">sudo iptables -<span class="keyword">A</span> INPUT -p udp --dport 37804 -j ACCEPT<span class="comment">; </span></span><br><span class="line">sudo iptables -<span class="keyword">A</span> INPUT -p tcp --dport 37804 -j ACCEPT<span class="comment">; </span></span><br><span class="line">sudo iptables -<span class="keyword">A</span> INPUT -p tcp --dport 27036 -j ACCEPT<span class="comment">; </span></span><br><span class="line">sudo iptables -I INPUT -p udp --dport 27031 -j ACCEPT<span class="comment">; </span></span><br><span class="line">sudo iptables -I INPUT -p udp --dport 27036 -j ACCEPT<span class="comment">; </span></span><br><span class="line">sudo iptables -I INPUT -p tcp --dport 27036 -j ACCEPT<span class="comment">; </span></span><br><span class="line">sudo iptables -I INPUT -p tcp --dport 27037 -j ACCEPT<span class="comment">;'" &gt;&gt; ~/.bash_aliases</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">echo "alias steamStream='</span><br><span class="line">sudo iptables -<span class="keyword">A</span> INPUT -p udp --dport 27036 -j ACCEPT<span class="comment">; </span></span><br><span class="line">sudo iptables -<span class="keyword">A</span> INPUT -p udp --dport 37804 -j ACCEPT<span class="comment">; </span></span><br><span class="line">sudo iptables -<span class="keyword">A</span> INPUT -p tcp --dport 37804 -j ACCEPT<span class="comment">; </span></span><br><span class="line">sudo iptables -<span class="keyword">A</span> INPUT -p tcp --dport 27036 -j ACCEPT<span class="comment">; </span></span><br><span class="line">sudo iptables -I INPUT -p udp --dport 27031 -j ACCEPT<span class="comment">; </span></span><br><span class="line">sudo iptables -I INPUT -p udp --dport 27036 -j ACCEPT<span class="comment">; </span></span><br><span class="line">sudo iptables -I INPUT -p tcp --dport 27036 -j ACCEPT<span class="comment">; </span></span><br><span class="line">sudo iptables -I INPUT -p tcp --dport 27037 -j ACCEPT<span class="comment">;'" &gt;&gt; ~/.bash_aliases</span></span><br></pre></td></tr></table></figure>
 <p>Restart the terminal, you will be able to unblock the network with <code>steamStream</code> command. And make sure your host device and your chromebook are on the same network. You should be able to stream from your PC to your chromebook right now.</p>
 <h2 id="Setup_Sony_Dualshock_4_Wireless_Controller">Setup Sony Dualshock 4 Wireless Controller</h2><p>I really like the PS4 controllers, you can now use them on almost every devices - your PS4, PC, Mac and Linux. To use them in Linux on Chromebook, I think the best way is to use the <a href="https://github.com/chrippa/ds4drv" target="_blank" rel="external">ds4drv</a> package.</p>
 <p>To install this package, we must first install all the dependencies:</p>
@@ -132,7 +132,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z4tech.github.io/2016-12-01/How-to-configure-Linux-Steam-and-PS4-Controller-on-Chromebook/" data-id="ciw89v17i000plp9t0vf80o3k" class="article-share-link">Share</a>
+      <a data-url="http://z4tech.github.io/2016-12-01/How-to-configure-Linux-Steam-and-PS4-Controller-on-Chromebook/" data-id="ciw89webu000pny9ttwijmiwh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -175,7 +175,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z4tech.github.io/2016-06-01/Update-Node-js/" data-id="ciw89v173000dlp9t1o7q75ql" class="article-share-link">Share</a>
+      <a data-url="http://z4tech.github.io/2016-06-01/Update-Node-js/" data-id="ciw89webh000dny9tnjii9qi1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/update/">update</a></li></ul>
@@ -221,7 +221,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z4tech.github.io/2015-11-21/ssh-proxy/" data-id="ciw89v15q0000lp9tl19322r7" class="article-share-link">Share</a>
+      <a data-url="http://z4tech.github.io/2015-11-21/ssh-proxy/" data-id="ciw89wean0000ny9tluneis3n" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/">ssh</a></li></ul>
@@ -264,7 +264,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z4tech.github.io/2015-09-27/Never-Try-sudo-brew/" data-id="ciw89v17e000ilp9t2bfm878o" class="article-share-link">Share</a>
+      <a data-url="http://z4tech.github.io/2015-09-27/Never-Try-sudo-brew/" data-id="ciw89webq000iny9tj5yon8cm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/brew/">brew</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sudo/">sudo</a></li></ul>
@@ -308,7 +308,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z4tech.github.io/2015-09-26/nodejsStaticServer/" data-id="ciw89v16s0005lp9teyz0sr40" class="article-share-link">Share</a>
+      <a data-url="http://z4tech.github.io/2015-09-26/nodejsStaticServer/" data-id="ciw89weba0005ny9teh3ldliv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Static-Server/">Static Server</a></li></ul>
@@ -361,7 +361,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z4tech.github.io/2015-09-01/Anki2Gitbook/" data-id="ciw89v17m000rlp9tni8xk06r" class="article-share-link">Share</a>
+      <a data-url="http://z4tech.github.io/2015-09-01/Anki2Gitbook/" data-id="ciw89webx000rny9thclwn0g9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gitbook/">gitbook</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ruby/">ruby</a></li></ul>
@@ -400,7 +400,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z4tech.github.io/2015-08-26/hello/" data-id="ciw89v16z000clp9tm28f2u3s" class="article-share-link">Share</a>
+      <a data-url="http://z4tech.github.io/2015-08-26/hello/" data-id="ciw89webf000cny9txupxz72y" class="article-share-link">Share</a>
       
       
     </footer>
