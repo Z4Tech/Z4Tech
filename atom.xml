@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Tracking...]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://z4tech.github.io/"/>
-  <updated>2016-05-31T17:44:45.000Z</updated>
+  <updated>2016-12-02T20:53:40.000Z</updated>
   <id>http://z4tech.github.io/</id>
   
   <author>
@@ -15,10 +15,63 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[How to configure Linux, Steam In-Home Streaming and PS4 Controller on Chromebook]]></title>
+    <link href="http://z4tech.github.io/2016-12-01/How-to-configure-Linux-Steam-and-PS4-Controller-on-Chromebook/"/>
+    <id>http://z4tech.github.io/2016-12-01/How-to-configure-Linux-Steam-and-PS4-Controller-on-Chromebook/</id>
+    <published>2016-12-02T02:59:27.000Z</published>
+    <updated>2016-12-02T20:53:40.000Z</updated>
+    <content type="html"><![CDATA[<p>It has been a long while since the last time I update my blog. I guarantee that I don’t just waste my time on watching videos and playing video games lol.</p>
+<h2 id="Why_another_post_on_this_topic?">Why another post on this topic?</h2><p>There is a bunch of guides on the web about setting up Linux on Chromebook, Installing Steam and using PS4 Controller on Linux, but no single article covers these topics together. And it turns out a little tricky to get all the thing done right. Also, some of these journals are outdated so far. And this one should provide you enough information to configure all these stuff without a headache. I’ve done all these on Asus CBE-431, it should also work on other models.</p>
+<h2 id="Install_Linux_with_Crouton">Install Linux with Crouton</h2><p>It is also possible to make a dual-boot Linux-ChromeOS on your device, but Crouton really provides a safe and efficient enough system to get things done. You can switch between two OS swiftly and the loss of performance is negligible.</p>
+<p>To do this, you should first get into Developer Mode. This will wipe out all the local data on your device. Be sure to backup all the files you need before any further actions. And then follow these steps:</p>
+<ul>
+<li>Turn off your laptop, using the combination of Esc, Refresh and Power buttons to reboot your Chromebook into Recovery Mode.</li>
+<li>After seeing the Recovery Mode screen with the yellow exclamation, press Ctrl+D. And then press Enter to confirm entering Developer Mode. Wait a little while (about 10 minutes) until it return to the screen with the yellow exclamation. Leave it alone until it reboots into Chrome OS.</li>
+<li>Some old models have a physical switch that you’ll have to flip in order to turn on Developer Mode. Check your instruction if you are not sure.</li>
+</ul>
+<p>After login to the system, download the crouton script from <a href="https://github.com/dnschneid/crouton" target="_blank" rel="external">here</a> or click <a href="https://goo.gl/fd3zc" target="_blank" rel="external">this</a> to download the latest version.</p>
+<p>Open a shell (Ctrl+Alt+T, type shell and hit enter), and run the following command:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sh ~/Downloads/crouton -r trusty -t xfce&#10;&#10;# or add other targets if you like&#10;# sudo sh ~/Downloads/crouton -r trusty -t xfce,keyboard,audio,cli-extra</span><br></pre></td></tr></table></figure>
+<p>You can also change <code>xfce</code> to other desktops you want, for example <code>unity</code> which has a better look but requires more performance. And you can also add other targets such as <code>keyboard,audio,cli-extra</code> after <code>xfce</code> if you need.</p>
+<p>Ubuntu 14.04 Trusty is used, because the default 12.04 Precise could cause some trouble while installing steam.</p>
+<p>In the end of the installation, you will be asked the user and password for your linux system, choose anything you want. Remember the password, it will be used a lot later on.</p>
+<h2 id="Install_Steam_on_Ubuntu">Install Steam on Ubuntu</h2><p>First login to ubuntu by entering <code>enter-chroot</code> in the shell and <code>startxfce4</code> to start the xfce desktop (use other command for other desktops). Notice you can switch between Ubuntu and ChromeOS with Crtl+Alt+Shift+Left/Right(at the top of the keyboard) in any time.</p>
+<p>And then, download the latest version of Steam for Linux from the <a href="http://store.steampowered.com/about/" target="_blank" rel="external">Steam website</a>. Start the terminal in linux, and install Ubuntu Software Center with the following command:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># You need to enter your password using sudo&#10;sudo apt-get install softeware-center</span><br></pre></td></tr></table></figure>
+<p>After that, find and click the Steam <code>.deb</code> package and install steam following the instructions. You should be able to login and launch Steam after this.</p>
+<h2 id="In-Home_Streaming">In-Home Streaming</h2><p><a href="https://brismuth.com/" target="_blank" rel="external">Brismuth</a> has a very good post on this topic. I just followed his steps. The ports used by Steam In-Home Streaming is by default blocked by ChromeOS. To unblock them, using the <code>iptables</code> command is the simplest way. First, install this command with <code>sudo apt-get install iptables</code> in the shell.</p>
+<p>And then create a new alias command to unblock all the ports needed:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &#34;alias steamStream=&#39;&#10;sudo iptables -A INPUT -p udp --dport 27036 -j ACCEPT; &#10;sudo iptables -A INPUT -p udp --dport 37804 -j ACCEPT; &#10;sudo iptables -A INPUT -p tcp --dport 37804 -j ACCEPT; &#10;sudo iptables -A INPUT -p tcp --dport 27036 -j ACCEPT; &#10;sudo iptables -I INPUT -p udp --dport 27031 -j ACCEPT; &#10;sudo iptables -I INPUT -p udp --dport 27036 -j ACCEPT; &#10;sudo iptables -I INPUT -p tcp --dport 27036 -j ACCEPT; &#10;sudo iptables -I INPUT -p tcp --dport 27037 -j ACCEPT;&#39;&#34; &#62;&#62; ~/.bash_aliases</span><br></pre></td></tr></table></figure>
+<p>Restart the terminal, you will be able to unblock the network with <code>steamStream</code> command. And make sure your host device and your chromebook are on the same network. You should be able to stream from your PC to your chromebook right now.</p>
+<h2 id="Setup_Sony_Dualshock_4_Wireless_Controller">Setup Sony Dualshock 4 Wireless Controller</h2><p>I really like the PS4 controllers, you can now use them on almost every devices - your PS4, PC, Mac and Linux. To use them in Linux on Chromebook, I think the best way is to use the <a href="https://github.com/chrippa/ds4drv" target="_blank" rel="external">ds4drv</a> package.</p>
+<p>To install this package, we must first install all the dependencies:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install python2.7-dev&#10;sudo apt-get install python-setuptools&#10;sudo apt-get install bluez-utils</span><br></pre></td></tr></table></figure>
+<p>And then install ds4drv by <code>sudo pip install ds4drv</code>.</p>
+<p>After this, you can pair your controllers. First, turn on the bluetooth on your chromebook in chromeOS, and then switch back to Linux, entering <code>sudo ds4drv</code> in the terminal. Pair the controller by press the share button and PS button together, the light in front of the controller should start blinking, and turn bright blue after successfully paired.</p>
+<p>You can also check how to pair multiple controllers and set the light on the controller on <a href="https://github.com/chrippa/ds4drv" target="_blank" rel="external">ds4drv</a> website.</p>
+<p>I’m having trouble with using the the PS4 controller in Big Picture Mode this way. I will update if I manage to fix it.</p>
+<h2 id="Enjoy!">Enjoy!</h2><p>Every time you want to use this setup, you should</p>
+<ul>
+<li>open up Ubuntu in the shell and start desktop</li>
+<li>Unblock the ports with <code>steamStream</code> in the Linux terminal</li>
+<li>Launch Steam on both chromebook and host machine</li>
+<li>Make sure your bluetooth on the chromebook is enabled and pair the controller after <code>sudo ds4drv</code> commmand</li>
+<li>Start streaming!</li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>It has been a long while since the last time I update my blog. I guarantee that I don’t just waste my time on watching videos and playing]]>
+    </summary>
+    
+      <category term="Misc" scheme="http://z4tech.github.io/categories/Misc/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[Update Node.js]]></title>
     <link href="http://z4tech.github.io/2016-06-01/Update-Node-js/"/>
     <id>http://z4tech.github.io/2016-06-01/Update-Node-js/</id>
-    <published>2016-05-31T17:40:15.000Z</published>
+    <published>2016-06-01T05:40:15.000Z</published>
     <updated>2016-05-31T17:44:45.000Z</updated>
     <content type="html"><![CDATA[<p>The fastest way to update Node.js is to use moudule <code>n</code>:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g n&#10;sudo n stable</span><br></pre></td></tr></table></figure>
@@ -41,7 +94,7 @@
     <title><![CDATA[Simple Proxy by SSH Tunneling]]></title>
     <link href="http://z4tech.github.io/2015-11-21/ssh-proxy/"/>
     <id>http://z4tech.github.io/2015-11-21/ssh-proxy/</id>
-    <published>2015-11-20T19:02:24.000Z</published>
+    <published>2015-11-21T08:02:24.000Z</published>
     <updated>2015-11-20T19:17:00.000Z</updated>
     <content type="html"><![CDATA[<p>It is unbelievable that some friends with their own VPS don’t know about SSH tunneling. This is a far more easy way to set up a proxy.  </p>
 <figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">ssh</span> -<span class="type">D</span> <span class="foreign"><span class="keyword">port</span> username@server</span></span><br></pre></td></tr></table></figure>
@@ -62,7 +115,7 @@
     <title><![CDATA[sudo brew - Do not Try and How to Recover]]></title>
     <link href="http://z4tech.github.io/2015-09-27/Never-Try-sudo-brew/"/>
     <id>http://z4tech.github.io/2015-09-27/Never-Try-sudo-brew/</id>
-    <published>2015-09-27T04:41:07.000Z</published>
+    <published>2015-09-27T16:41:07.000Z</published>
     <updated>2015-09-27T04:53:41.000Z</updated>
     <content type="html"><![CDATA[<p>If someone tries to use <code>brew</code> with <code>sudo</code>, a warning will show up:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error: Cowardly refusing to `sudo brew [option]`&#10;You can use brew with sudo, but only if the brew executable is owned by root.&#10;However, this is both not recommended and completely unsupported so do so at&#10;your own risk.</span><br></pre></td></tr></table></figure><br>Well, you may continue to run it after use <code>sudo -i</code>, but you will laterly have many problems. While <code>brew</code> is running under <code>root</code>, it will change the ownership of folders like <code>/usr/local/include</code> to <code>root</code>. And later if you want to run commands like <code>brew link</code>, you will fail:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error: Could not symlink include/gdbm.h&#10;/usr/local/include is not writable.</span><br></pre></td></tr></table></figure><br>To recover this, you must change the ownership back:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R $(whoami) /usr/local/include&#10;sudo chown -R $(whoami) /usr/local/lib</span><br></pre></td></tr></table></figure><br>And remember: Do not try <code>sudo brew</code> the next time.</p>
 ]]></content>
@@ -82,7 +135,7 @@
     <title><![CDATA[Static Server in Node.js]]></title>
     <link href="http://z4tech.github.io/2015-09-26/nodejsStaticServer/"/>
     <id>http://z4tech.github.io/2015-09-26/nodejsStaticServer/</id>
-    <published>2015-09-26T14:56:08.000Z</published>
+    <published>2015-09-27T02:56:08.000Z</published>
     <updated>2015-09-26T15:53:53.000Z</updated>
     <content type="html"><![CDATA[<p>From time to time, I need to host some static files to do some local jobs. One possible solution is to set up the config file of the server engine (eg. apache, nginx). However, you need to restart the engine or reload the config file, and you may encounter really annoying some errors. Recently, I found node.js server function is quite useful in doing such things. You can easily set up servers on different ports and easily change the path. Here is the simple code:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//server.js</span></span><br><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">var</span> parse = <span class="built_in">require</span>(<span class="string">'url'</span>).parse;</span><br><span class="line"><span class="keyword">var</span> join = <span class="built_in">require</span>(<span class="string">'path'</span>).join;</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> root = __dirname + <span class="string">'/public'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> url = parse(req.url);</span><br><span class="line">  <span class="keyword">var</span> path = join(root, url.pathname);</span><br><span class="line">  <span class="keyword">var</span> stream = fs.createReadStream(path);</span><br><span class="line">  stream.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">    res.statusCode = <span class="number">500</span>;</span><br><span class="line">    res.end(<span class="string">'Internal Server Error'</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">  stream.on(<span class="string">'data'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">chunk</span>)</span>&#123;</span><br><span class="line">    res.write(chunk);</span><br><span class="line">  &#125;);</span><br><span class="line">  stream.on(<span class="string">'end'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    res.end();</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure><br>Just put your files in the <code>\public</code> folder and run <code>node server.js</code>. All things are done! You can check them out on <code>localhost:3000</code>.<br>A more elegant way is to utilize the <code>pipe()</code> mechanism:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//server.js</span></span><br><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">var</span> parse = <span class="built_in">require</span>(<span class="string">'url'</span>).parse;</span><br><span class="line"><span class="keyword">var</span> join = <span class="built_in">require</span>(<span class="string">'path'</span>).join;</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> root = __dirname + <span class="string">'/public'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> url = parse(req.url);</span><br><span class="line">  <span class="keyword">var</span> path = join(root, url.pathname);</span><br><span class="line">  <span class="keyword">var</span> stream = fs.createReadStream(path);</span><br><span class="line">  stream.pipe(res);</span><br><span class="line">  stream.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">    res.statusCode = <span class="number">500</span>;</span><br><span class="line">    res.end(<span class="string">'Internal Server Error'</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure> </p>
 <p>Very easy isn’t it?</p>
@@ -103,7 +156,7 @@
     <title><![CDATA[Convert Anki Flashcards into Gitbook]]></title>
     <link href="http://z4tech.github.io/2015-09-01/Anki2Gitbook/"/>
     <id>http://z4tech.github.io/2015-09-01/Anki2Gitbook/</id>
-    <published>2015-09-01T08:42:41.000Z</published>
+    <published>2015-09-01T20:42:41.000Z</published>
     <updated>2015-09-26T15:54:33.000Z</updated>
     <content type="html"><![CDATA[<p>Anki is a great flashcard tool for memorizing new words, and here how to convert the flashcard desk in anki to wordlists in pdf, epub and html.  This procedure is done on Mac OSX 10.10, and probably work similarly on other Unix system.</p>
 <p>Recently I’ve been working on GRE vocabulary, and Anki is a well-known multi-platform app for this. There are many great sets of cards and sometimes you just want to use them else where such as creating some wordlist. And this time, I need some wordlists from GRE3000, a popular book in China. I bought the printed version, but it is in alphabetical order. Luckily someone has made an Anki desk for it!</p>
@@ -133,7 +186,7 @@
     <title><![CDATA[Hello, World!]]></title>
     <link href="http://z4tech.github.io/2015-08-26/hello/"/>
     <id>http://z4tech.github.io/2015-08-26/hello/</id>
-    <published>2015-08-26T02:48:28.000Z</published>
+    <published>2015-08-26T14:48:28.000Z</published>
     <updated>2015-08-26T04:05:15.000Z</updated>
     <content type="html"><![CDATA[<p>This is my technical blog where I save my work and progress. Hope it will be helpful for someone, especially you.  </p>
 ]]></content>
